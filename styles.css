@@ -1,0 +1,26 @@
+* {
+    border: 1px solid red;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(100px, 1fr) 5fr;
+    grid-template-rows: 1fr 6fr;
+}
+
+.sidebar-bottom {
+    grid-column: 1/2;
+}
+
+.navigation {
+    grid-row: 1/2;
+    grid-column: 2/3;
+}
+
+table {
+    border: 2px solid black;
+}
+
+td {
+    border: 1px solid blue;
+}

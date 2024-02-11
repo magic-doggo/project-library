@@ -1,3 +1,5 @@
+const myLibrary = ["The Hobbit", "Harry Potter"];
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -9,5 +11,11 @@ function Book(title, author, pages, read) {
 }
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
-
 console.group(theHobbit.info())
+
+// function Book() {
+//   // the constructor...
+//  }
+// function addBookToLibrary() {
+//   // do stuff here
+// }

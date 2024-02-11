@@ -8,6 +8,50 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="sidebar-top">
+            <h1>MagicLibrary</h1>
+        </div>
+        <div class="sidebar-bottom">
+            <form action="" id="add-book">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author">
+                <label for="pages">Nr. of Pages</label>
+                <input type="tel" name="pages" id="pages" pattern="[0-9]*">
+                <label for="status">Status: Read</label>
+                <input type="checkbox" name="status" id="status">
+                <button type="submit" form="add-book">Add Book</button>
+            </form>
+        </div>
+        <div class="navigation">
+            <div class="books-read">Books read:</div>
+            <div class="books-unread">Books unread:</div>
+            <div class="forum">Forum</div>
+            <div class="settings">Settings</div>
+        </div>  
+        <div class="main">
+            <table>List of books in your MagicLibrary
+                <thead>
+                    <tr>
+                        <th>Title</td>
+                        <th>Author</td>
+                        <th>Nr. of Pages</td>
+                        <th>Read/Unread</td>
+                        <th colspan="1">&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Harry Potter</td>
+                        <td>J.K. Rowling</td>
+                        <td>100</td>
+                        <td>Read</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+    </div>    
 </body>
 </html>
