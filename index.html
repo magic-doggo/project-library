@@ -14,20 +14,30 @@
         </div>
         <div class="sidebar-bottom">
             <form action="" id="add-book">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" required>
-                <label for="author">Author</label>
-                <input type="text" id="author" name="author">
-                <label for="pages">Nr. of Pages</label>
-                <input type="tel" name="pages" id="pages" pattern="[0-9]*">
-                <label for="status">Status: Read</label>
-                <input type="checkbox" name="status" id="status">
-                <button type="submit" form="add-book">Add Book</button>
+                <ul>
+                    <li class="title">
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </li>
+                    <li class="author">
+                        <label for="author">Author</label>
+                        <input type="text" id="author" name="author">
+                    </li>
+                    <li class="pages">
+                        <label for="pages">Nr. of Pages</label>
+                        <input type="tel" name="pages" id="pages" pattern="[0-9]*">
+                    </li>
+                    <li class="status">
+                        <label for="status">Status: Read</label>
+                        <input type="checkbox" name="status" id="status">
+                    </li>
+                    <button type="submit" form="add-book">Add Book</button>
+                </ul>
             </form>
         </div>
         <div class="navigation">
-            <div class="books-read">Books read:</div>
-            <div class="books-unread">Books unread:</div>
+            <div class="books-read">Books read: <span>0</span></div>
+            <div class="books-unread">Books unread: <span>0</span></div>
             <div class="forum">Forum</div>
             <div class="settings">Settings</div>
         </div>  

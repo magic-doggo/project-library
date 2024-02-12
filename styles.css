@@ -24,3 +24,13 @@ table {
 td {
     border: 1px solid blue;
 }
+
+.navigation {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.navigation > div {
+    align-self: center;
+}
