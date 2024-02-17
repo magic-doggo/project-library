@@ -17,9 +17,9 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-        return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
-    }
+    // this.info = function() {
+    //     return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read)
+    // }
 }
 
 const addBookButton = document.querySelector("#add-book-button");
@@ -33,15 +33,17 @@ function addBookToLibrary (event) {
     read = document.getElementById("read").value;
     let newBook = new Book (title, author, pages, read);
     myLibrary.push(newBook);
-    console.log(myLibrary);
-    // return(myLibrary)
+    console.log(myLibrary + "test");
+    console.log(myLibrary.length);
+    // const form = 
+    document.querySelector("form").reset();
+    return;
 }
 
-// console.log(myLibrary) does not work yet
+console.log(myLibrary)
+console.log(myLibrary.length + "outside")
 
 
 // const harryPotter = new Book("harry potter", "J.K. Rowling", 215, "read")
 // myLibrary.push(harryPotter)
-// addBookToLibrary()
-
 // const harryPOOO = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
