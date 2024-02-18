@@ -22,28 +22,32 @@ function Book(title, author, pages, read) {
     // }
 }
 
+let table = document.getElementById("table");
+function addBookToTable (bookInfo) {
+    let row = document.createElement("tr");
+    // let bookKeys = Object.keys(newbook)
+    for (let i = 0; i < bookInfo.length; i++) {
+        let cell = document.createElement("td");
+        cell.innerHTML = bookInfo[i];
+        row.appendChild(cell);
+    }
+    table.appendChild(row);
+}
+
 const addBookButton = document.querySelector("#add-book-button");
 addBookButton.addEventListener("click", addBookToLibrary);
 function addBookToLibrary (event) {
     event.preventDefault();
-    //do stuff here. add event listeners and stuff
     title = document.getElementById("title").value;
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
     read = document.getElementById("read").value;
     let newBook = new Book (title, author, pages, read);
     myLibrary.push(newBook);
-    console.log(myLibrary + "test");
-    console.log(myLibrary.length);
-    // const form = 
     document.querySelector("form").reset();
-    return;
+    let bookInfo = Object.values(newBook);
+    addBookToTable(bookInfo)
+    return bookInfo;
 }
 
-console.log(myLibrary)
-console.log(myLibrary.length + "outside")
-
-
-// const harryPotter = new Book("harry potter", "J.K. Rowling", 215, "read")
-// myLibrary.push(harryPotter)
 // const harryPOOO = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
