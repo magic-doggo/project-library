@@ -25,7 +25,6 @@ function Book(title, author, pages, read) {
 let table = document.getElementById("table");
 function addBookToTable (bookInfo) {
     let row = document.createElement("tr");
-    // let bookKeys = Object.keys(newbook)
     for (let i = 0; i < bookInfo.length; i++) {
         let cell = document.createElement("td");
         cell.innerHTML = bookInfo[i];
@@ -34,10 +33,14 @@ function addBookToTable (bookInfo) {
     table.appendChild(row);
 }
 
+let form = document.querySelector("form")
+
 const addBookButton = document.querySelector("#add-book-button");
 addBookButton.addEventListener("click", addBookToLibrary);
 function addBookToLibrary (event) {
-    event.preventDefault();
+    if (form.checkValidity() === true){
+        event.preventDefault();
+    }
     title = document.getElementById("title").value;
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
@@ -46,7 +49,9 @@ function addBookToLibrary (event) {
     myLibrary.push(newBook);
     document.querySelector("form").reset();
     let bookInfo = Object.values(newBook);
-    addBookToTable(bookInfo)
+    if (bookInfo[0] != ""){
+        addBookToTable(bookInfo)
+    }
     return bookInfo;
 }
 
