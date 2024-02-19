@@ -31,6 +31,7 @@
                         <label for="read">Status: Read</label>
                         <input type="checkbox" name="read" id="read" value="Read">
                     </li>
+                    <input type="hidden" name="remove" id="remove" value="">
                     <button type="submit" form="add-book" id="add-book-button">Add Book</button>
                 </ul>
             </form>
@@ -49,7 +50,8 @@
                         <th>Author</td>
                         <th>Nr. of Pages</td>
                         <th>Read/Unread</td>
-                        <th colspan="1">&nbsp;</th>
+                        <th>Remove book</th>
+                        <!-- <th colspan="1">&nbsp;</th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +60,7 @@
                         <td>J.K. Rowling</td>
                         <td>100</td>
                         <td>Read</td>
+                        <td><img src="trash-can-outline.svg" alt="trash can removal icon" width="20px"></td>
                     </tr>
                 </tbody>
             </table>
