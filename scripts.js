@@ -2,6 +2,7 @@ let title;
 let author;
 let pages;
 let read;
+let trash;
 // let remove;
 
 const myLibrary = [];
@@ -25,6 +26,9 @@ function addBookToTable (bookInfo) {
     let trash = row.insertCell(-1);
     trash.innerHTML = "<img src='trash-can-outline.svg' width='20px'/>";
     table.appendChild(row);
+    trash.addEventListener("click", function() {
+        trash.parentNode.remove();        
+    })
 }
 
 let form = document.querySelector("form")
