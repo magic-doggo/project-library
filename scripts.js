@@ -43,18 +43,15 @@ function addBookToLibrary (event) {
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
     read = document.getElementById("read").value;
-    // let img = document.createElement("img");
-    // remove = document.getElementById("remove").value;
-    // remove = document.getElementById("myImg").src;
-    // img.src = "trash-can-outline.svg";
-    // remove.appendChild(img);
     let newBook = new Book (title, author, pages, read);
     myLibrary.push(newBook);
-    document.querySelector("form").reset();
+    // document.querySelector("form").reset();
     let bookInfo = Object.values(newBook);
-    if (bookInfo[0] != ""){ //without this, even invalid inputs add to table
-        addBookToTable(bookInfo)
+    if (bookInfo[0] != "" && bookInfo[1] != "" && bookInfo[2] != ""){ //without this, even invalid inputs add to table
+        addBookToTable(bookInfo);
+        document.querySelector("form").reset();
     }
+    
     return bookInfo;
 }
 
