@@ -3,6 +3,7 @@ let author;
 let pages;
 let read;
 let trash;
+let readUnread;
 // let remove;
 
 const myLibrary = [];
@@ -23,6 +24,8 @@ function addBookToTable (bookInfo) {
         cell.innerHTML = bookInfo[i];
         row.appendChild(cell);
     }
+    // let readUnreadStatus = bookInfo[3];
+    // readUnreadStatus.classList.add("readUnread")
     let trash = row.insertCell(-1);
     trash.innerHTML = "<img src='trash-can-outline.svg' width='20px'/>";
     table.appendChild(row);
@@ -42,7 +45,13 @@ function addBookToLibrary (event) {
     title = document.getElementById("title").value;
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
-    read = document.getElementById("read").value;
+    // read = document.getElementById("read").value;
+    if (document.getElementById("read").validity.valueMissing == true) {
+        read = "unread " + "<img src='swap-vertical-bold.svg' width='20px'/>" 
+    }   else {
+        read = "read" + "<img src='swap-vertical-bold.svg' width='20px'/>"
+    }
+
     let newBook = new Book (title, author, pages, read);
     myLibrary.push(newBook);
     // document.querySelector("form").reset();
@@ -51,8 +60,17 @@ function addBookToLibrary (event) {
         addBookToTable(bookInfo);
         document.querySelector("form").reset();
     }
-    
     return bookInfo;
 }
 
-// const harryPOOO = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
+readUnread = document.querySelectorAll('td:nth-child(4)');
+// readUnread.forEach(pizza => {
+//     pizza.addEventListener("click", swapReadUnread);
+//     function swapReadUnread () {
+//         console.log("pizza")
+//     }
+// })
+
+//check if can align all trash icons. maybe remove default book from
+//find way to difference between ticked and unticked checkbox.
+//add event listener for read/unread and change the value
