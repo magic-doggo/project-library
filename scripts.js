@@ -4,8 +4,7 @@ let pages;
 let read;
 let trash;
 let readUnread;
-// let remove;
-
+let form = document.querySelector("form")
 const myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -13,7 +12,6 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    // this.remove = remove;
 }
 
 let table = document.getElementById("table");
@@ -24,32 +22,47 @@ function addBookToTable (bookInfo) {
         cell.innerHTML = bookInfo[i];
         row.appendChild(cell);
     }
-    // let readUnreadStatus = bookInfo[3];
-    // readUnreadStatus.classList.add("readUnread")
     let trash = row.insertCell(-1);
     trash.innerHTML = "<img src='trash-can-outline.svg' width='20px'/>";
     table.appendChild(row);
     trash.addEventListener("click", function() {
         trash.parentNode.remove();        
     })
+    readUnread = document.querySelectorAll("td:nth-child(4)")
+    readUnread.forEach(bookStatus => {
+        bookStatus.addEventListener("click", swapReadUnread);
+        function swapReadUnread () {
+            if (bookStatus.innerHTML == 'read') {
+                bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">';
+            }
+            else if (bookStatus.innerHTML == 'unread') {
+                bookStatus.innerHTML = 'read <img src="swap-vertical-bold.svg" width="20px">'
+            }
+            else if (bookStatus.innerHTML == 'unread <img src="swap-vertical-bold.svg" width="20px">') {
+                bookStatus.innerHTML = 'read <img src="swap-vertical-bold.svg" width="20px">'
+            }
+            // else if (bookStatus.innerHTML == 'read <img src="swap-vertical-bold.svg" width="20px">') 
+            else {
+                bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">'
+            }
+            console.log(bookStatus)
+        }
+    })
 }
-
-let form = document.querySelector("form")
 
 const addBookButton = document.querySelector("#add-book-button");
 addBookButton.addEventListener("click", addBookToLibrary);
 function addBookToLibrary (event) {
-    if (form.checkValidity() === true){ //if it's true, we do not need "required attribute". if it is not correct, we do not need preventDefault(). Is this correct?
+    if (form.pages.checkValidity() === true){ //if it's true, we do not need "required attribute". if it is not correct, we do not need preventDefault(). Is this correct?
         event.preventDefault();
-    }
+    // }
     title = document.getElementById("title").value;
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
-    // read = document.getElementById("read").value;
     if (document.getElementById("read").validity.valueMissing == true) {
         read = "unread " + "<img src='swap-vertical-bold.svg' width='20px'/>" 
     }   else {
-        read = "read" + "<img src='swap-vertical-bold.svg' width='20px'/>"
+        read = "read " + "<img src='swap-vertical-bold.svg' width='20px'/>"
     }
 
     let newBook = new Book (title, author, pages, read);
@@ -62,15 +75,6 @@ function addBookToLibrary (event) {
     }
     return bookInfo;
 }
-
-readUnread = document.querySelectorAll('td:nth-child(4)');
-// readUnread.forEach(pizza => {
-//     pizza.addEventListener("click", swapReadUnread);
-//     function swapReadUnread () {
-//         console.log("pizza")
-//     }
-// })
+}
 
 //check if can align all trash icons. maybe remove default book from
-//find way to difference between ticked and unticked checkbox.
-//add event listener for read/unread and change the value
