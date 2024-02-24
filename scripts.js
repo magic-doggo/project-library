@@ -33,15 +33,14 @@ function addBookToTable (bookInfo) {
         bookStatus.addEventListener("click", swapReadUnread);
         function swapReadUnread () {
             if (bookStatus.innerHTML == 'read') {
-                bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">';
+                bookStatus.innerHTML = 'unread <img src="swap-horizontal-bold.svg" width="20px">';
             }
-            else if (bookStatus.innerHTML == 'unread' || bookStatus.innerHTML == 'unread <img src="swap-vertical-bold.svg" width="20px">') {
-                bookStatus.innerHTML = 'read <img src="swap-vertical-bold.svg" width="20px">'
+            else if (bookStatus.innerHTML == 'unread' || bookStatus.innerHTML == 'unread <img src="swap-horizontal-bold.svg" width="20px">') {
+                bookStatus.innerHTML = 'read <img src="swap-horizontal-bold.svg" width="20px">'
             }
             else {
-                bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">'
+                bookStatus.innerHTML = 'unread <img src="swap-horizontal-bold.svg" width="20px">'
             }
-            console.log(bookStatus)
         }
     })
 }
@@ -56,14 +55,13 @@ function addBookToLibrary (event) {
     author = document.getElementById("author").value;
     pages = document.getElementById("pages").value;
     if (document.getElementById("read").validity.valueMissing == true) {
-        read = "unread " + "<img src='swap-vertical-bold.svg' width='20px'/>" 
+        read = "unread " + "<img src='swap-horizontal-bold.svg' width='20px'/>" 
     }   else {
-        read = "read " + "<img src='swap-vertical-bold.svg' width='20px'/>"
+        read = "read " + "<img src='swap-horizontal-bold.svg' width='20px'/>"
     }
 
     let newBook = new Book (title, author, pages, read);
     myLibrary.push(newBook);
-    // document.querySelector("form").reset();
     let bookInfo = Object.values(newBook);
     if (bookInfo[0] != "" && bookInfo[1] != "" && bookInfo[2] != ""){ //without this, even invalid inputs add to table
         addBookToTable(bookInfo);
@@ -72,10 +70,3 @@ function addBookToLibrary (event) {
     return bookInfo;
     }
 }
-
-//check if can align all trash icons. maybe remove default book from
-//weird issue, when i add new table rows, and click on readunread to swap status
-//it will print out the status as many times as there are rows
-//and also every second row does not swap status until i add a new book
-//and then the rows that didnt work now work, and books that work don't work
-
