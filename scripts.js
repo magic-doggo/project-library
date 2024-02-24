@@ -28,20 +28,16 @@ function addBookToTable (bookInfo) {
     trash.addEventListener("click", function() {
         trash.parentNode.remove();        
     })
-    readUnread = document.querySelectorAll("td:nth-child(4)")
+    readUnread = document.querySelectorAll("tr:nth-last-child(1) > td:nth-child(4)")
     readUnread.forEach(bookStatus => {
         bookStatus.addEventListener("click", swapReadUnread);
         function swapReadUnread () {
             if (bookStatus.innerHTML == 'read') {
                 bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">';
             }
-            else if (bookStatus.innerHTML == 'unread') {
+            else if (bookStatus.innerHTML == 'unread' || bookStatus.innerHTML == 'unread <img src="swap-vertical-bold.svg" width="20px">') {
                 bookStatus.innerHTML = 'read <img src="swap-vertical-bold.svg" width="20px">'
             }
-            else if (bookStatus.innerHTML == 'unread <img src="swap-vertical-bold.svg" width="20px">') {
-                bookStatus.innerHTML = 'read <img src="swap-vertical-bold.svg" width="20px">'
-            }
-            // else if (bookStatus.innerHTML == 'read <img src="swap-vertical-bold.svg" width="20px">') 
             else {
                 bookStatus.innerHTML = 'unread <img src="swap-vertical-bold.svg" width="20px">'
             }
@@ -74,7 +70,12 @@ function addBookToLibrary (event) {
         document.querySelector("form").reset();
     }
     return bookInfo;
-}
+    }
 }
 
 //check if can align all trash icons. maybe remove default book from
+//weird issue, when i add new table rows, and click on readunread to swap status
+//it will print out the status as many times as there are rows
+//and also every second row does not swap status until i add a new book
+//and then the rows that didnt work now work, and books that work don't work
+
